@@ -22,8 +22,7 @@ URL：http://authserver.cumt.edu.cn/authserver/login?service=http%3A//portal.cum
            pip install pyexecjs -i https://pypi.tuna.tsinghua.edu.cn/simple
            python login.py
  
- 目前只是能用,如果你想更好的使用，请不要使用request.session,并将class拆分，cookie可以用redis存一下(请注意过期时间，以及如何验证过期)。清洗一下json数据
-会让前端轻松一点。
+ 目前只是能用,如果你想更好的使用，请不要使用request.session,并将class拆分，cookie可以用redis存一下(请注意过期时间，以及如何验证过期)。json数据还是处理一下比较好
 
  如果只是想简单的使用，请看着整(最基础的爬虫，就是加密部分有一点麻烦)
  
