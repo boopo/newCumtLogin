@@ -18,7 +18,8 @@ URL：http://authserver.cumt.edu.cn/authserver/login?service=http%3A//portal.cum
  <h4>请在内网环境下使用</h4>
  使用方法：
  
-           pip install -r requirements.txt
+           pip install bs4
+           pip install pyexecjs -i https://pypi.tuna.tsinghua.edu.cn/simple
            python login.py
  
  目前只是能用,如果你想更好的使用，请不要使用request.session,并将class拆分，cookie可以用redis存一下(请注意过期时间，以及如何验证过期)。清洗一下json数据
