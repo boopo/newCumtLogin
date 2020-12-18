@@ -26,9 +26,12 @@ URL：http://authserver.cumt.edu.cn/authserver/login?service=http%3A//portal.cum
 
  如果只是想简单的使用，请看着整(最基础的爬虫，就是加密部分有一点麻烦)
  
+ 网站更新的话,这边也会陆续更新的
+ 
  本项目在不久的将来会集成的矿小助里面
  
- 什么？你还不知道矿小助？
+ <h4>什么？你还不知道矿小助？</h4>
+ 
  
  请访问https://www.lvyingzhao.cn 或者我们的正式网站 https://kxz.atcumt.com/
  
@@ -36,3 +39,5 @@ URL：http://authserver.cumt.edu.cn/authserver/login?service=http%3A//portal.cum
  关于爬虫的一部分的介绍和AES加密的部分，有时间会更新在博客 https://boopo.github.io (应该会有的)
  
  如果你有更好的实现，请直接 pull request
+ 
+ 
