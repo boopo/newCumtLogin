@@ -16,6 +16,7 @@ URL：http://authserver.cumt.edu.cn/authserver/login?service=http%3A//portal.cum
  + 图书馆历史借阅信息
  + 图书馆收藏信息
  <h4>请在内网环境下使用</h4>
+ 把学号和密码换成自己的
  使用方法：
  
            pip install bs4
