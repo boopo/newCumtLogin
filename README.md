@@ -37,6 +37,7 @@ URL：http://authserver.cumt.edu.cn/authserver/login?service=http%3A//portal.cum
  
  请访问https://www.lvyingzhao.cn 或者我们的正式网站 https://kxz.atcumt.com/
  
+ 后续做一下验证码自动识别(如果有空的话)
  
  关于爬虫的一部分的介绍和AES加密的部分，有时间会更新在博客 https://boopo.github.io (应该会有的)
  
