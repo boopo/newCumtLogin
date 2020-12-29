@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 from encrypt import get_token
 
-from settings import username, password
+#from settings import username, password
 
 url_login = 'http://authserver.cumt.edu.cn/authserver/login?service=http%3A//portal.cumt.edu.cn/casservice'  # 登录
 url_post = 'http://authserver.cumt.edu.cn/authserver/login?service=http%3A%2F%2Fportal.cumt.edu.cn%2Fcasservice'  # 提交表单
@@ -185,7 +185,7 @@ class libIds:
 
 if __name__ == '__main__':
     # username为学号， password为密码
-    a = newIds(username, password)
+    a = newIds("username", "password")
     a.login()
     # 校园卡余额
     print(a.get_balance_simple())
