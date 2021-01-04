@@ -30,7 +30,7 @@ URL：http://authserver.cumt.edu.cn/authserver/login?service=http%3A//portal.cum
  
  网站更新的话,这边也会陆续更新的
  
- 本项目在不久的将来会集成的矿小助里面
+ 本项目已经集成到矿小助里面，但是做了一些改进，在我的仓库cumt-kxz中
  
  <h4>什么？你还不知道矿小助？</h4>
  
