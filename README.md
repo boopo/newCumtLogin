@@ -1,11 +1,15 @@
 # NewCumtLogin
 中国矿业大学融合门户登录。
--
-URL：http://authserver.cumt.edu.cn/authserver/login?service=http%3A//portal.cumt.edu.cn/casservice 
+
+[融合门户](http://authserver.cumt.edu.cn/authserver/login?service=http%3A//portal.cumt.edu.cn/casservice)   <br>
+截止2021/3/4 教务系统又又又更新了。。。<br>
+迁移了教务系统和公寓管理系统<br>
+老的统一登录认证已经被架空了(doge)</br>
 
 本项目实现了新版统一登录认证页面的登录和一系列操作  
 具体有:  
  + 登录操作
+ + 教务系统的登录及相关的一系列操作
  + 简单查询校园卡余额
  + 简单查询图书借阅信息
  + 简单查询校园卡流水
@@ -30,19 +34,21 @@ URL：http://authserver.cumt.edu.cn/authserver/login?service=http%3A//portal.cum
  
  网站更新的话,这边也会陆续更新的
  
- 本项目已经集成到矿小助里面，但是做了一些改进，在我的仓库cumt-kxz中
+ 本项目已经集成到矿小助里面，但是做了一些改进，在我的仓库[cumt-kxz](https://github.com/boopo/cumt-kxz)中
  
  <h4>什么？你还不知道矿小助？</h4>
  
+ 我们的[正式网站](https://kxz.atcumt.com/) 
  
- 请访问https://www.lvyingzhao.cn 或者我们的正式网站 https://kxz.atcumt.com/
  
- 后续做一下验证码自动识别(如果有空的话)
+ 关于爬虫的一部分的介绍和AES加密的部分在[博客](https://www.yuque.com/boopo/)
  
- 关于爬虫的一部分的介绍和AES加密的部分，有时间会更新在博客 https://boopo.github.io (应该会有的)
- 
- ps: 在docker里跑有一点问题，目前没有解决
- 
+ ps: 在docker里跑有一点问题，现在解决了，代码耦合度过高，链式调用导致响应超时
+ 解决方式：
+  + 多线程
+  + 异步调用
+  + 懒加载
+  
  如果你有更好的实现，请直接 pull request
  
  

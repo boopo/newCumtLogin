@@ -1,3 +1,5 @@
+from time import time
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -18,7 +20,9 @@ url_library_re = 'http://121.248.104.188:8080/CASSSO/login.jsp'  # 图书馆认�
 url_library_Loan = 'https://findcumt.libsp.com/find/loanInfo/loanList'  # 图书馆当前借阅信息
 url_library_loan_history = 'https://findcumt.libsp.com/find/loanInfo/loanHistoryList'  # 图书馆历史借阅信息
 url_library_favorite = 'https://findcumt.libsp.com/find/favorites/recordList'  # 图书馆收藏列表
-
+url_jwxt_login1 = 'http://jwxt.cumt.edu.cn/sso/jziotlogin' #教务系统跳转
+url_jwxt_login2 = 'http://authserver.cumt.edu.cn/authserver/login?service=http%3A%2F%2Fjwxt.cumt.edu.cn%2Fsso%2Fjziotlogin'
+url_jwxt_login3 = 'http://jwxt.cumt.edu.cn/sso/jziotlogin?ticket=ST-1138058-zPXeUMJe-H8kQpqweT0PHkbJt98Wisedu-New-IDS1'
 headers = {
     'User-Agent': "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 FireFox / 29.0",
     "X-Requested-With": "XMLHttpRequest"
@@ -36,7 +40,6 @@ class newIds:
         soup = BeautifulSoup(r.text, 'html5lib')
         salt = soup.find('input', id='pwdEncryptSalt')['value']
         execution = soup.find('input', id='execution')['value']
-        # 密码加密
         salt_pwd = get_token(self.password, salt)
 
         form_login = {
@@ -54,9 +57,27 @@ class newIds:
             l1 = []
             for a in self.session.cookies:
                 l1.append(a.value)
-        #    print('校园卡余额所用Cookie', l1[0])
-
             return True
+        else:
+            return False
+
+
+    def get_jwxt(self):
+        headers = {
+            'User-Agent': "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 FireFox / 29.0",
+            "X-Requested-With": "XMLHttpRequest"
+        }
+        r = self.session.get(url=url_jwxt_login2, headers=headers, allow_redirects= False)
+        if r.status_code == 302:
+            u1 = r.headers['Location']
+            r1 = self.session.get(url=u1, headers=headers)
+            l1 = []
+            for a in self.session.cookies:
+                l1.append(a.value)
+            print("教务系统所用Cookie"+l1[5])
+            print(l1)
+        else:
+            return False
 
     def get_balance_simple(self):
         r = self.session.get(url=url_balance, headers=headers)
@@ -99,6 +120,8 @@ class newIds:
         r2 = self.session.get(url=r.headers['Location'], headers=headers, allow_redirects=False)
         r3 = self.session.get(url=r2.headers['Location'], headers=headers, allow_redirects=False)
         r4 = self.session.get(url=r3.headers['Location'], headers=headers, allow_redirects=False)
+        print(r4.status_code)
+        print(r4.headers)
         # 重定向出现问题，手动跳转获取token, 反正以后也得拆分。。。
         # print('图书馆所用的jwtOpacAuth为：', r4.headers['Location'][43:-12])
         return r4.headers['Location'][43:-12]
@@ -144,6 +167,7 @@ class newIds:
 # 以下不需要request.session会话保持
 # 请不要频繁请求图书馆，http连接池会满，可以令verify为Flase，或connection 为 close
 # 有时候，学校的光缆被挖断后，会出现这种情况(手动狗头)
+
 class libIds:
     def __init__(self, jwt_token):
         self.token = jwt_token
@@ -185,33 +209,41 @@ class libIds:
 
 if __name__ == '__main__':
     # username为学号， password为密码
-    a = newIds("username", "password")
+    a = newIds("08193109", "xxxxx")
     a.login()
-    # 校园卡余额
-    print(a.get_balance_simple())
 
-    # 校园卡充值
-    print(a.get_balance_charge())
+    # a.get_jwxt()
 
-    # 校园卡历史流水(按时间查)
-    print(a.get_balance_history_pro())
 
-    # 获取图书馆借阅信息(简约)
-    print(a.get_library_simple())
-
-    # 校园卡流水(按消费记录逆序)
-    print(a.get_balance_simple())
+    # # 校园卡余额
+    # print(a.get_balance_simple())
+    #
+    # # 校园卡充值
+    # print(a.get_balance_charge())
+    #
+    # # 校园卡历史流水(按时间查)
+    # print(a.get_balance_history_pro())
+    #
+    # # 获取图书馆借阅信息(简约)
+    # print(a.get_library_simple())
+    #
+    # # 校园卡流水(按消费记录逆序)
+    # print(a.get_balance_simple())
 
     # 获取图书馆的jwt_token
-    token = a.get_library_token()
+    # token = a.get_library_token()
+    #
+    # b = libIds(token)
+    # #
+    # # # 获取目前的图书借阅信息
+    # # print(b.get_library_list())
+    #
+    # # 获取图书馆的历史借阅信息
+    # print(b.get_library_history_list())
+    # t4 = time()
+    # print(t4-t2)
+    #
+    # # 图书馆默认收藏信息
+    # print(b.get_library_favorite())
 
-    b = libIds(token)
 
-    # 获取目前的图书借阅信息
-    print(b.get_library_list())
-
-    # 获取图书馆的历史借阅信息
-    print(b.get_library_history_list())
-
-    # 图书馆默认收藏信息
-    print(b.get_library_favorite())
