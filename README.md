@@ -1,7 +1,8 @@
 # NewCumtLogin
 中国矿业大学融合门户登录。
 
-[融合门户](http://authserver.cumt.edu.cn/authserver/login?service=http%3A//portal.cumt.edu.cn/casservice)   <br>
+
+代码实现及其原理解析[点此](https://www.yuque.com/boopo/pc)    <br>
 截止2021/3/4 教务系统又又又更新了。。。<br>
 迁移了教务系统和公寓管理系统<br>
 老的统一登录认证已经被架空了(doge)</br>
