@@ -14,6 +14,7 @@
 迁移了教务系统和公寓管理系统<br>
 老的统一登录认证已经被架空了(doge)</br>
 
+
 本项目实现了新版统一登录认证页面的登录和一系列操作  
 具体有:  
  + 登录操作
@@ -36,13 +37,19 @@
            pip install pyexecjs -i https://pypi.tuna.tsinghua.edu.cn/simple
            python login.py
  
- 目前只是能用,如果你想更好的使用，请不要使用request.session,并将class拆分，cookie可以用redis存一下(请注意过期时间，以及如何验证过期)。json数据还是处理一下比较好
+ 还有很多方法没有实现，但是只要拿到了cookie，剩下的都不是什么问题~~主要是我懒的再写了~~。
+ 
+ 目前只是能用,如果你想更好的使用，请不要使用request.session方法,并将class拆分，cookie可以用redis存一下(请注意过期时间，以及如何验证过期)。json数据还是处理一下比较好
 
  如果只是想简单的使用，请看着整(最基础的爬虫，就是加密部分有一点麻烦)
  
+ 我做了一个[session持久化中心](https://github.com/boopo/session-persistence)，里面有一些方法可以参考
+ 
+ 最近发现除了教务系统和一卡通需要内网访问，其他的都可以直接在公网访问，所以可以把代码打包部署到serverless  serverless版不再放出~~写的太烂了~~<br>
+ 
  网站更新的话,这边也会陆续更新的
  
- 本项目已经集成到矿小助里面，但是做了一些改进(仅供参考，不再更新)，在我的仓库[cumt-kxz](https://github.com/boopo/cumt-kxz)中
+ 本项目已经集成到矿小助里面，但是做了一些改进(此版本矿小助后端爬虫因为不可抗力的因素已经不再使用,但是是可以正常运行的)，在我的仓库[cumt-kxz](https://github.com/boopo/cumt-kxz)中
  
  <h4>什么？你还不知道矿小助？</h4>
  
@@ -57,6 +64,8 @@
   + 异步调用
   + 懒加载
   
- 如果你有更好的实现，请直接 pull request(bushi)，请直接来图书馆8楼喝茶吧(doge)
+ 如果你有更好的实现，请直接 pull request(bushi)，~~请直接来图书馆8楼喝茶吧~~
+ 
+ 你都看到最后了，还不来个Star？
  
  
